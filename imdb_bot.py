@@ -2,9 +2,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import requests
 import re
-
-imdb = "https://www.imdb.com/chart/top?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=4da9d9a5-d299-43f2-9c53-f0efa18182cd&pf_rd_r=EXQY8TA697MWD8SQJ5CP&pf_rd_s=right-4&pf_rd_t=15506&pf_rd_i=boxoffice&ref_=chtbo_ql_3"
-
+import os
 
 def top_movies_by_genres():
     genre = input("Genre >> ")
@@ -104,16 +102,24 @@ def most_pop():
 
     print("THE EXCEL DOCUMENT HAS CREATED SUCCESFULY IN CURRENT DIRECTORY")
 
+if not os.path.exists("C:\\Users\\dogu2\\Desktop\\IMDB"):
+    os.makedirs("C:\\Users\\dogu2\\Desktop\\IMDB")
+os.chdir("C:\\Users\\dogu2\\Desktop\\IMDB")
 
 print("************** IMDB BOT V1.0 ***************")
-print("What You Want To Do ?\nScrap IMDB TOP 250 MOVIES(1)\nScrap Most Popular Movies(2)\nScrap TOP Rated TV Shows(3)\nScrap TOP 250 Movies By Genres(4)")
-decision = int(input())
+while True:
+    print("What You Want To Scrape ?\nIMDB TOP 250 MOVIES(1)\nMost Popular Movies(2)\nTOP Rated TV Shows(3)\nTOP 250 Movies By Genres(4)\nQUIT(q)")
+    decision = input()
 
-if decision == 1:
-    top250()
-elif decision == 2:
-    most_pop()
-elif decision == 3:
-    top_rated_tv()
-else:
-    top_movies_by_genres()
+    if decision == "1":
+        top250()
+    elif decision == "2":
+        most_pop()
+    elif decision == "3":
+        top_rated_tv()
+    elif decision == "4":
+        top_movies_by_genres()
+    elif decision == "q" :
+        break
+
+
